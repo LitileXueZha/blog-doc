@@ -1,0 +1,25 @@
+{
+  "name": "blog-doc",
+  "version": "0.0.1",
+  "description": "博客文档，基于swagger-ui展示",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LitileXueZha/blog-doc.git"
+  },
+  "keywords": [
+    "document"
+  ],
+  "author": "tao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LitileXueZha/blog-doc/issues"
+  },
+  "homepage": "https://github.com/LitileXueZha/blog-doc#readme",
+  "dependencies": {
+    "swagger-ui-dist": "^3.14.1"
+  }
+}
