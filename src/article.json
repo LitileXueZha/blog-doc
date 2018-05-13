@@ -1,0 +1,12 @@
+{
+  "Article": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "该文章唯一主键id",
+        "example": "2dsaf"
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@
 ├── node_modules/ 第三方库引用
 ├── index.html
 ├── src
-|   ├── ... 其它单元文档
-|   └── index.yaml 主文档
+│   ├── ... 其它单元文档
+│   └── index.json 主文档
 └── readme.md
 ```
