@@ -1,0 +1,100 @@
+{
+  "hello": "这里是一些通用的格式信息，键名标识了它们的用途",
+
+  "//==": "请求参数",
+  "parameter": {
+    "id": {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": "唯一标识id",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "page": {
+      "name": "page",
+      "in": "query",
+      "description": "分页数，表示第几页。默认为1",
+      "example": 1,
+      "schema": {
+        "type": "number"
+      }
+    },
+    "limit": {
+      "name": "limit",
+      "in": "query",
+      "description": "数量，共有多少条数据。默认为10",
+      "example": 10,
+      "schema": {
+        "type": "number"
+      }
+    },
+    "filter": {
+      "name": "filterKey",
+      "in": "query",
+      "description": "数据库里的字段名，返回与内容完全匹配的。**注：这个只是示范！！下面是个例子**",
+      "example": "xxx",
+      "schema": {
+        "type": "any"
+      },
+      "deprecated": true
+    }
+  },
+  
+  "//==": "响应体",
+  "response": {
+    "default": {
+      "description": "一般而言，返回的HTTP Code不是200就是报错了。返回error字段表示错误信息",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "number",
+                "descrption": "信息码，有三种情况：1（请求成功）、0（请求失败）、-1（服务端错误）",
+                "example": 0
+              },          
+              "error": { "$ref": "#/key/error" }
+            }
+          }
+        }
+      },
+      "headers": {
+        "Location": {
+          "description": "当返回重定向3xx状态码时，应包含此请求头",
+          "schema": { "type": "string" }
+        },
+        "Retry-After": {
+          "description": "当返回503时，应包含此请求头",
+          "schema": { "type": "date" }
+        }
+      }
+    }
+  },
+
+  "//==": "单个返回字段的定义",
+  "key": {
+    "code": {
+      "type": "number",
+      "descrption": "信息码，有三种情况：1（请求成功）、0（请求失败）、-1（服务端错误）",
+      "example": 1
+    },
+    "error": {
+      "type": "string",
+      "description": "错误信息。当信息码不为1（请求未成功）时返回",
+      "example": "缺少[xxx]、[xx]参数"
+    },
+    "page": {
+      "type": "number",
+      "description": "页数",
+      "example": 1
+    },
+    "total": {
+      "type": "number",
+      "description": "返回数据总数",
+      "example": 1
+    }
+  }
+}

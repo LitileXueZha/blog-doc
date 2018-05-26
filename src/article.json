@@ -4,9 +4,184 @@
     "properties": {
       "id": {
         "type": "string",
-        "description": "该文章唯一主键id",
+        "description": "该文章唯一标识id",
         "example": "2dsaf"
+      },
+      "title": {
+        "type": "string",
+        "description": "文章标题",
+        "example": "星空在闪烁"
+      },
+      "summary": {
+        "type": "string",
+        "description": "文章摘要，可为空",
+        "example": "《终极三国》电视剧的插曲，想想都有点小怀念呢"
+      },
+      "content": {
+        "type": "string",
+        "description": "文章内容，md格式",
+        "example": ">一段引用`代码`"
+      },
+      "tag": {
+        "type": "string",
+        "description": "文章的分类标签",
+        "example": "JavaScript"
+      },
+      "status": {
+        "type": "number",
+        "description": "文章状态。0（草稿）、1（上线）、2（下线）、3（垃圾箱）",
+        "example": 3
+      },
+      "create_at": {
+        "type": "number",
+        "description": "创建时间，采用时间戳格式，避免十二时区的混乱",
+        "example": 1527317510011
       }
+    }
+  },
+
+  "methods": {
+    "get": {
+      "tags": ["Article"],
+      "summary": "获取文章列表",
+      "description": "批量获取接口，可以传入分页、模糊\\精确搜索参数",
+      "parameters": [
+        { "$ref": "utils.json#/parameter/page" },
+        { "$ref": "utils.json#/parameter/limit" },
+        { "$ref": "utils.json#/parameter/filter" },
+        {
+          "name": "tag",
+          "in": "query",
+          "description": "过滤返回与这一标签相符的一系列文章",
+          "example": "JavaScript",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "成功返回文章列表",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "page": { "$ref": "utils.json#/key/page" },
+                      "total": { "$ref": "utils.json#/key/total" },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/Article"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": {
+          "$ref": "utils.json#/response/default"
+        }
+      },
+      "security": [{ "api_key": [] }]
+    },
+    "post": {
+      "tags": ["Article"],
+      "summary": "创建文章",
+      "requestBody": {
+        "required": true,
+        "description": "创建文章需要的数据",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": { "$ref": "#/Article/properties/title" },
+                "summary": { "$ref": "#/Article/properties/summary" },
+                "content": { "$ref": "#/Article/properties/content" },
+                "tag": { "$ref": "#/utils/tag" }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "返回刚刚创建的文章数据",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "$ref": "#/Article"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    }
+  },
+
+  "single": {
+    "get": {
+      "tags": ["Article"],
+      "summary": "获取单个文章",
+      "description": "返回指定id的文章详细信息。如果没有则返回404",
+      "parameters": [
+        { "$ref": "utils.json#/parameter/id" }
+      ],
+      "responses": {
+        "200": { "$ref": "#/methods/post/responses/200" },
+        "default": { "$ref": "#/methods/post/responses/default" }
+      },
+      "security": [{ "api_key": [] }]
+    },
+    "put": {
+      "tags": ["Article"],
+      "summary": "更新单个文章",
+      "description": "修改文章内容、分类、状态等等。垃圾箱里的文章不再显示",
+      "parameters": [
+        { "$ref": "utils.json#/parameter/id" }
+      ],
+      "requestBody": {
+        "required": true,
+        "description": "需要修改的数据，后台会直接替换之",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": { "$ref": "#/utils/tag" }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": { "$ref": "#/methods/post/responses/200" },
+        "default": { "$ref": "#/methods/post/responses/default" }
+      },
+      "security": [{ "api_key": [] }]
+    }
+  },
+  "utils": {
+    "tag": {
+      "type": "string",
+      "description": "文章的分类标签，应该是标签表对应的ID，以方便日后修改显示名称",
+      "example": "2dsaf"
     }
   }
 }

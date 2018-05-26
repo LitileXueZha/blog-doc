@@ -1,24 +1,27 @@
 {
-  "swagger": "3.0",
-  "host": "api.ningtaostudy.cn",
-  "basePath": "v1",
-  "schemes": ["https", "http"],
-
+  "openapi": "3.0",
+  
   "info": {
     "title": "博客文档",
-    "description": "这是一个基于SwaggerUI的文档",
+    "description": "这是一个基于[SwaggerUI](https://swagger.io/specification/#oasObject)的文档",
     "version": "1.0.0"
   },
 
-  "security": {
-    "api_key": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "header",
-      "value": "xxx",
-      "description": "请求头，用以简单认证API权限，每次发送都应该带上它"
+  "servers": [
+    {
+      "url": "{schemes}://api.ningtaostudy.cn/{basePath}",
+      "description": "API服务器地址",
+      "variables": {
+        "schemes": {
+          "enum": ["https", "http"],
+          "default": "https"
+        },
+        "basePath": {
+          "default": "v1"
+        }
+      }
     }
-  },
+  ],
 
   "tags": [
     { "name": "Article", "description": "与文章相关的一系列接口" },
@@ -27,31 +30,28 @@
   ],
 
   "paths": {
-    "/article": {
-      "get": {
-        "tags": ["Article"],
-        "summary": "获取文章列表",
-        "description": "批量获取接口，可以传入分页、模糊\\精确搜索参数",
-        "parameters": [
-          {
-            "name": "page",
-            "type": "integer",
-            "in": "query",
-            "description": "分页数，表示第几页。默认为0",
-            "example": 0
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功返回文章列表",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "article.json#/Article"
-              }
-            }
-          }
-        }
+    "/articles": {
+      "$ref": "article.json#/methods"
+    },
+    "/articles/{id}": {
+      "$ref": "article.json#/single"
+    }
+  },
+
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "default": "xx",
+        "description": "请求头，用以简单认证API权限，每次发送都应该带上它"
+      }
+    },
+
+    "schemas": {
+      "Article": {
+        "$ref": "article.json#/Article"
       }
     }
   }
