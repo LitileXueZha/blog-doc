@@ -12,3 +12,7 @@
 │   └── index.json 主文档
 └── readme.md
 ```
+
+## 选择BootCDN加载swagger-ui-dist
+
+由于穷的一比，没钱提升服务器的带宽，导致加载一个1M的文件都得10s，这完全不能忍。。。
