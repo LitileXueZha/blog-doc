@@ -41,8 +41,8 @@
     window.onload = function() {
 
       // Build a system
-      const ui = SwaggerUIBundle({
-        url: `${window.location.origin}/src/index.json`,
+      window.ui = SwaggerUIBundle({
+        url: window.location.origin +'/src/index.json',
         dom_id: '#swagger-ui',
         deepLinking: true,
         presets: [
@@ -52,11 +52,9 @@
         plugins: [
           SwaggerUIBundle.plugins.DownloadUrl
         ],
-        layout: "StandaloneLayout"
-      })
-
-      window.ui = ui
-    }
+        layout: "StandaloneLayout",
+      });
+    };
   </script>
   </body>
 </html>
