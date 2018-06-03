@@ -1,0 +1,40 @@
+{
+  "single": {
+    "get": {
+      "tags": ["Search"],
+      "summary": "搜索相关内容",
+      "description": "全文搜索，空格作为分词符",
+      "parameters": [
+        {
+          "name": "q",
+          "in": "query",
+          "required": true,
+          "description": "搜索文本",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "type": "object",
+                    "description": "暂时没想好"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    }
+  }
+}

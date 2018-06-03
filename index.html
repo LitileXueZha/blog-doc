@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>博客文档</title>
-    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="./favicon.png" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="./node_modules/swagger-ui-dist/swagger-ui.css" > -->
     <link href="https://cdn.bootcss.com/swagger-ui/3.14.2/swagger-ui.css" rel="stylesheet">
     <style>
-      html
-      {
+      html {
         box-sizing: border-box;
         overflow: -moz-scrollbars-vertical;
         overflow-y: scroll;
@@ -17,13 +17,11 @@
 
       *,
       *:before,
-      *:after
-      {
+      *:after {
         box-sizing: inherit;
       }
 
-      body
-      {
+      body {
         margin:0;
         background: #fafafa;
       }
@@ -45,6 +43,7 @@
         url: window.location.origin +'/src/index.json',
         dom_id: '#swagger-ui',
         deepLinking: true,
+        docExpansion: 'none',
         presets: [
           SwaggerUIBundle.presets.apis,
           SwaggerUIStandalonePreset
@@ -52,7 +51,8 @@
         plugins: [
           SwaggerUIBundle.plugins.DownloadUrl
         ],
-        layout: "StandaloneLayout",
+        // layout: "StandaloneLayout",
+        layout: "BaseLayout",
       });
     };
   </script>

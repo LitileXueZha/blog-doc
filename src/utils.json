@@ -76,6 +76,16 @@
 
   "//==": "单个返回字段的定义",
   "key": {
+    "id": {
+      "type": "string",
+      "description": "该文章唯一标识id",
+      "example": "2dsaf"
+    },
+    "create_at": {
+      "type": "number",
+      "description": "创建时间，采用时间戳格式，避免十二时区的混乱",
+      "example": 1527317510011
+    },
     "code": {
       "type": "number",
       "descrption": "信息码，有三种情况：1（请求成功）、0（请求失败）、-1（服务端错误）",

@@ -1,0 +1,29 @@
+{
+  "Comment": {
+    "type": "object",
+    "properties": {
+      "id": { "$ref": "utils.json#/key/id" },
+      "parent_id": {
+        "type": "string",
+        "description": "关联的文章、留言等id，这里评论独立出来，方便横向扩展",
+        "example": "eowuro"
+      },
+      "name": {
+        "type": "string",
+        "description": "评论人的名字，可以存于localstroge中，只在第一次评论弹框输入",
+        "example": "滔"
+      },
+      "content": {
+        "type": "string",
+        "description": "评论内容",
+        "example": "星空在闪烁，是你的眼泪悄悄划过"
+      },
+      "type": {
+        "type": "string",
+        "description": "评论类型，可以是文章、留言等",
+        "example": "文章"
+      },
+      "create_at": { "$ref": "utils.json#/key/create_at" }
+    }
+  }
+}

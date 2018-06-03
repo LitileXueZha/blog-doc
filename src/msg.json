@@ -1,0 +1,29 @@
+{
+  "Msg": {
+    "type": "object",
+    "properties": {
+      "id": { "$ref": "utils.json#/key/id" },
+      "name": {
+        "type": "string",
+        "description": "留言人的姓名",
+        "example": "滔"
+      },
+      "content": {
+        "type": "string",
+        "description": "留言，内容",
+        "example": "好久不见，甚是想念"
+      },
+      "avatar": {
+        "type": "string",
+        "description": "用户头像，默认前端生成名字的第一个字再加随机背景色",
+        "example": "https://www.ningtaostudy.cn/images/1527317510011.png"
+      },
+      "platform": {
+        "type": "string",
+        "description": "留言使用的平台：pc（电脑）、mobile（手机）",
+        "example": "pc"
+      },
+      "create_at": { "$ref": "utils.json#/key/create_at" }
+    }
+  }
+}

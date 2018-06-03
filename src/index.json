@@ -9,10 +9,10 @@
 
   "servers": [
     {
-      "url": "{schemes}://api.ningtaostudy.cn/{basePath}",
+      "url": "{protocol}://api.ningtaostudy.cn/{basePath}",
       "description": "API服务器地址",
       "variables": {
-        "schemes": {
+        "protocol": {
           "enum": ["https", "http"],
           "default": "https"
         },
@@ -26,16 +26,14 @@
   "tags": [
     { "name": "Article", "description": "与文章相关的一系列接口" },
     { "name": "Comment", "description": "评论，有文章的，也有留言板的" },
-    { "name": "Msg", "description": "留言板" }
+    { "name": "Msg", "description": "留言板" },
+    { "name": "Search", "description": "搜索" }
   ],
 
   "paths": {
-    "/articles": {
-      "$ref": "article.json#/methods"
-    },
-    "/articles/{id}": {
-      "$ref": "article.json#/single"
-    }
+    "/articles": { "$ref": "article.json#/methods" },
+    "/articles/{id}": { "$ref": "article.json#/single" },
+    "/search": { "$ref": "search.json#/single" }
   },
 
   "components": {
@@ -50,9 +48,9 @@
     },
 
     "schemas": {
-      "Article": {
-        "$ref": "article.json#/Article"
-      }
+      "Article": { "$ref": "article.json#/Article" },
+      "Msg": { "$ref": "msg.json#/Msg" },
+      "Comment": { "$ref": "comment.json#/Comment" }
     }
   }
 }
