@@ -27,7 +27,8 @@
     { "name": "Article", "description": "与文章相关的一系列接口" },
     { "name": "Comment", "description": "评论，有文章的，也有留言板的" },
     { "name": "Msg", "description": "留言板" },
-    { "name": "Search", "description": "搜索" }
+    { "name": "Search", "description": "搜索" },
+    { "name": "Tag", "description": "文章标签" }
   ],
 
   "paths": {
@@ -50,7 +51,8 @@
     "schemas": {
       "Article": { "$ref": "article.json#/Article" },
       "Msg": { "$ref": "msg.json#/Msg" },
-      "Comment": { "$ref": "comment.json#/Comment" }
+      "Comment": { "$ref": "comment.json#/Comment" },
+      "Tag": { "$ref": "tag.json#/Tag" }
     }
   }
 }

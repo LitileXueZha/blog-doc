@@ -1,0 +1,23 @@
+{
+  "Tag": {
+    "type": "object",
+    "properties": {
+      "id": { "$ref": "utils.json#/key/id" },
+      "value": {
+        "type": "string",
+        "description": "标签值，与显示的标签文本对应。方便后续统一修改",
+        "example": "js"
+      },
+      "text": {
+        "type": "string",
+        "description": "显示的标签文本",
+        "example": "JavaScript"
+      },
+      "click": {
+        "type": "number",
+        "description": "点击数",
+        "example": 10
+      }
+    }
+  }
+}
