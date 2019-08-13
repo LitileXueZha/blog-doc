@@ -21,8 +21,8 @@
         "type": "number"
       }
     },
-    "limit": {
-      "name": "limit",
+    "size": {
+      "name": "size",
       "in": "query",
       "description": "数量，共有多少条数据。默认为10",
       "example": 10,
@@ -83,7 +83,7 @@
     },
     "create_at": {
       "type": "number",
-      "description": "创建时间，采用时间戳格式，避免十二时区的混乱",
+      "description": "创建时间，采用时间戳格式，避免十二时区的混乱以及 mac 兼容性问题",
       "example": 1527317510011
     },
     "code": {

@@ -20,13 +20,28 @@
       },
       "tag": {
         "type": "string",
-        "description": "文章的分类标签",
+        "description": "文章的标签 id",
+        "example": "js"
+      },
+      "tag_name": {
+        "type": "string",
+        "description": "文章标签展示名",
         "example": "JavaScript"
       },
       "status": {
         "type": "number",
         "description": "文章状态。0（草稿）、1（上线）、2（下线）、3（垃圾箱）",
         "example": 3
+      },
+      "category": {
+        "type": "string",
+        "description": "文章分类。note（笔记）、life（生活）",
+        "example": "note"
+      },
+      "bg": {
+        "type": "string",
+        "description": "文章背景图 url。可为空",
+        "example": null
       },
       "create_at": { "$ref": "utils.json#/key/create_at" }
     }
@@ -39,13 +54,13 @@
       "description": "批量获取接口，可以传入分页、过滤参数",
       "parameters": [
         { "$ref": "utils.json#/parameter/page" },
-        { "$ref": "utils.json#/parameter/limit" },
+        { "$ref": "utils.json#/parameter/size" },
         { "$ref": "utils.json#/parameter/filter" },
         {
           "name": "tag",
           "in": "query",
           "description": "过滤返回与这一标签相符的一系列文章",
-          "example": "JavaScript",
+          "example": "js",
           "schema": {
             "type": "string"
           }
@@ -63,7 +78,6 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "page": { "$ref": "utils.json#/key/page" },
                       "total": { "$ref": "utils.json#/key/total" },
                       "items": {
                         "type": "array",
@@ -183,6 +197,7 @@
                   "data": {
                     "type": "object",
                     "description": "null，返回为一个空对象null",
+                    "example": null,
                     "nullable": true
                   }
                 }

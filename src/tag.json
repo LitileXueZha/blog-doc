@@ -3,21 +3,22 @@
     "type": "object",
     "properties": {
       "id": { "$ref": "utils.json#/key/id" },
-      "value": {
+      "name": {
         "type": "string",
-        "description": "标签值，与显示的标签文本对应。方便后续统一修改",
-        "example": "js"
-      },
-      "text": {
-        "type": "string",
-        "description": "显示的标签文本",
+        "description": "显示的标签名",
         "example": "JavaScript"
       },
       "click": {
         "type": "number",
         "description": "点击数",
         "example": 10
-      }
+      },
+      "status": {
+        "type": "number",
+        "description": "标签状态。1-可用、2-不可用",
+        "example": 1
+      },
+      "create_at": { "$ref": "utils.json#/key/create_at" }
     }
   }
 }
