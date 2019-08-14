@@ -7,7 +7,7 @@
       "name": "id",
       "in": "path",
       "required": true,
-      "description": "唯一标识id",
+      "description": "唯一标识 `id`",
       "schema": {
         "type": "string"
       }
@@ -15,7 +15,7 @@
     "page": {
       "name": "page",
       "in": "query",
-      "description": "分页数，表示第几页。默认为1",
+      "description": "分页数，表示第几页。默认为 1",
       "example": 1,
       "schema": {
         "type": "number"
@@ -24,7 +24,7 @@
     "size": {
       "name": "size",
       "in": "query",
-      "description": "数量，共有多少条数据。默认为10",
+      "description": "数量，共有多少条数据。默认为 10",
       "example": 10,
       "schema": {
         "type": "number"
@@ -45,7 +45,7 @@
   "//==": "响应体",
   "response": {
     "default": {
-      "description": "一般而言，返回的HTTP Code不是200就是报错了。返回error字段表示错误信息",
+      "description": "一般而言，返回的 HTTP Code 不是 200 就是**报错了**。返回 `error` 字段表示错误信息",
       "content": {
         "application/json": {
           "schema": {
@@ -63,11 +63,11 @@
       },
       "headers": {
         "Location": {
-          "description": "当返回重定向3xx状态码时，应包含此请求头",
+          "description": "当返回重定向 `3xx` 状态码时，应包含此请求头",
           "schema": { "type": "string" }
         },
         "Retry-After": {
-          "description": "当返回503时，应包含此请求头",
+          "description": "当返回 `503` 时，应包含此请求头",
           "schema": { "type": "date" }
         }
       }
@@ -78,13 +78,13 @@
   "key": {
     "id": {
       "type": "string",
-      "description": "该文章唯一标识id",
+      "description": "唯一标识 `id`",
       "example": "2dsaf"
     },
     "create_at": {
-      "type": "number",
-      "description": "创建时间，采用时间戳格式，避免十二时区的混乱以及 mac 兼容性问题",
-      "example": 1527317510011
+      "type": "date",
+      "description": "创建时间，注意 mac 兼容性问题",
+      "example": "2019-10-12 09:12:30"
     },
     "code": {
       "type": "number",
@@ -93,7 +93,7 @@
     },
     "error": {
       "type": "string",
-      "description": "错误信息。当信息码不为1（请求未成功）时返回",
+      "description": "错误信息。当信息码不为 `1`（请求未成功）时返回",
       "example": "缺少[xxx]、[xx]参数"
     },
     "page": {

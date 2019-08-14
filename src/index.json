@@ -34,7 +34,9 @@
   "paths": {
     "/articles": { "$ref": "article.json#/methods" },
     "/articles/{id}": { "$ref": "article.json#/single" },
-    "/search": { "$ref": "search.json#/single" }
+    "/search": { "$ref": "search.json#/single" },
+    "/tags": { "$ref": "tag.json#/methods" },
+    "/tags/{id}": { "$ref": "tag.json#/single" }
   },
 
   "components": {

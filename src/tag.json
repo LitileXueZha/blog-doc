@@ -2,7 +2,11 @@
   "Tag": {
     "type": "object",
     "properties": {
-      "id": { "$ref": "utils.json#/key/id" },
+      "id": {
+        "type": "string",
+        "description": "标签 `id`。应该是简写的英文",
+        "example": "js"
+      },
       "name": {
         "type": "string",
         "description": "显示的标签名",
@@ -19,6 +23,140 @@
         "example": 1
       },
       "create_at": { "$ref": "utils.json#/key/create_at" }
+    }
+  },
+
+  "methods": {
+    "get": {
+      "tags": ["Tag"],
+      "summary": "获取标签列表",
+      "description": "批量获取标签。考虑到这个不会太多，不做分页",
+      "parameters": [{
+        "name": "status",
+        "in": "query",
+        "description": "标签状态。1-可用、2-不可用",
+        "example": 1,
+        "schema": {
+          "type": "number"
+        }
+      }],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "total": { "$ref": "utils.json#/key/total" },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/Tag"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    },
+    "post": {
+      "tags": ["Tag"],
+      "summary": "创建一个标签",
+      "description": "创建标签需要的数据。可能会创建失败，因为该标签被逻辑删除。尽量使用 `status` 来控制标签",
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": { "$ref": "#/Tag/properties/id" },
+                "name": { "$ref": "#/Tag/properties/name" }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "total": { "$ref": "utils.json#/key/total" },
+                      "items": {
+                        "type": "array",
+                        "items": { "$ref": "#/Tag" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    }
+  },
+
+  "single": {
+    "put": {
+      "tags": ["Tag"],
+      "summary": "更新单个标签",
+      "description": "不能更新为相同 `id` 可用标签",
+      "parameters": [{
+        "$ref": "utils.json#/parameter/id"
+      }],
+      "responses": {
+        "200": { "$ref": "#/methods/post/responses/200" },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    },
+    "delete": {
+      "tags": ["Tag"],
+      "summary": "删除标签",
+      "description": "尽量用 `status` 来控制。最好不要删除",
+      "parameters": [{
+        "$ref": "utils.json#/parameter/id"
+      }],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "type": "object",
+                    "example": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
     }
   }
 }
