@@ -124,6 +124,19 @@
       "parameters": [{
         "$ref": "utils.json#/parameter/id"
       }],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": { "$ref": "#/Tag/properties/name" },
+                "status": { "$ref": "#/Tag/properties/status" }
+              }
+            }
+          }
+        }
+      },
       "responses": {
         "200": { "$ref": "#/methods/post/responses/200" },
         "default": { "$ref": "utils.json#/response/default" }

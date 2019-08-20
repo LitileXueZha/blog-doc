@@ -25,5 +25,152 @@
       },
       "create_at": { "$ref": "utils.json#/key/create_at" }
     }
+  },
+
+  "methods": {
+    "get": {
+      "tags": ["Msg"],
+      "summary": "获取留言列表",
+      "description": "批量获取留言。可以分页，默认按照创建时间排序",
+      "parameters": [
+        { "$ref": "utils.json#/parameter/page" },
+        { "$ref": "utils.json#/parameter/size" }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "total": { "$ref": "utils.json#/key/total" },
+                      "items": {
+                        "type": "array",
+                        "items": { "$ref": "#/Msg" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    },
+    "post": {
+      "tags": ["Msg"],
+      "summary": "创建留言",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "description": "留言需要的数据",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": { "$ref": "#/Msg/properties/name" },
+                "content": { "$ref": "#/Msg/properties/content" },
+                "platform": { "$ref": "#/Msg/properties/platform" }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": { "$ref": "#/Msg" }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    }
+  },
+
+  "single": {
+    "put": {
+      "tags": ["Msg"],
+      "summary": "更新单条留言",
+      "description": "用户端只提供更新头像。管理后台可过滤某些字段",
+      "parameters": [
+        { "$ref": "utils.json#/parameter/id" }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "avatar": { "$ref": "#/Msg/properties/avatar" }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": { "$ref": "#/Msg" }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    },
+    "delete": {
+      "tags": ["Msg"],
+      "summary": "删除留言",
+      "description": "删除不符合国家法律的留言！！！",
+      "parameters": [
+        { "$ref": "utils.json#/parameter/id" }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "type": "object",
+                    "nullable": true,
+                    "description": "null，返回为一个空对象null",
+                    "example": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    }
   }
 }
