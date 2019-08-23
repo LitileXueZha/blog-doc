@@ -38,7 +38,9 @@
     "/tags": { "$ref": "tag.json#/methods" },
     "/tags/{id}": { "$ref": "tag.json#/single" },
     "/msg": { "$ref": "msg.json#/methods" },
-    "/msg/{id}": { "$ref": "msg.json#/single" }
+    "/msg/{id}": { "$ref": "msg.json#/single" },
+    "/comments": { "$ref": "comment.json#/methods" },
+    "/comments/{id}": { "$ref": "comment.json#/single" }
   },
 
   "components": {
