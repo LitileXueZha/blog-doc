@@ -31,7 +31,7 @@
     "get": {
       "tags": ["Comment"],
       "summary": "获取评论列表",
-      "description": "根据 `parent_id` 获取对应文章、留言等的评论",
+      "description": "根据 `parent_id` 获取对应文章、留言等的评论；根据 `type` 获取数据只在管理后台开放",
       "parameters": [
         {
           "name": "parent_id",
