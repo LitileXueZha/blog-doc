@@ -24,11 +24,11 @@
   ],
 
   "tags": [
-    { "name": "Article", "description": "与文章相关的一系列接口" },
-    { "name": "Comment", "description": "评论，有文章的，也有留言板的" },
-    { "name": "Msg", "description": "留言板" },
     { "name": "Search", "description": "搜索" },
-    { "name": "Tag", "description": "文章标签" }
+    { "name": "Article", "description": "与文章相关的一系列接口" },
+    { "name": "Tag", "description": "文章标签" },
+    { "name": "Comment", "description": "评论，有文章的，也有留言板的" },
+    { "name": "Msg", "description": "留言板" }
   ],
 
   "paths": {
@@ -55,10 +55,11 @@
     },
 
     "schemas": {
+      "Search": { "$ref": "search.json#/Search" },
       "Article": { "$ref": "article.json#/Article" },
-      "Msg": { "$ref": "msg.json#/Msg" },
+      "Tag": { "$ref": "tag.json#/Tag" },
       "Comment": { "$ref": "comment.json#/Comment" },
-      "Tag": { "$ref": "tag.json#/Tag" }
+      "Msg": { "$ref": "msg.json#/Msg" }
     }
   }
 }

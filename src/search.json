@@ -1,8 +1,36 @@
 {
+  "Search": {
+    "type": "object",
+    "properties": {
+      "id": { "$ref": "utils.json#/key/id" },
+      "title": {
+        "type": "string",
+        "description": "搜索结果标题",
+        "example": "语法笔记"
+      },
+      "summary": {
+        "type": "string",
+        "description": "搜索结果摘要。与关键词相关的内容简写，取关键词的前后 20 个字",
+        "example": "...md语法极其简洁，程序员的艺术...我们常用的es语法是js的源头..."
+      },
+      "url": {
+        "type": "string",
+        "description": "跳转地址",
+        "example": "/articles/detail?id=2dsaf"
+      },
+      "type": {
+        "type": "string",
+        "description": "搜索结果类型。后端记录目前仅有：`article`-文章",
+        "example": "article"
+      },
+      "create_at": { "$ref": "utils.json#/key/create_at" }
+    }
+  },
+
   "single": {
     "get": {
       "tags": ["Search"],
-      "summary": "搜索相关内容",
+      "summary": "搜索相关内容。目前仅支持文章、站内写死的内容",
       "description": "全文搜索，空格作为分词符",
       "parameters": [
         {
@@ -25,7 +53,13 @@
                   "code": { "$ref": "utils.json#/key/code" },
                   "data": {
                     "type": "object",
-                    "description": "暂时没想好"
+                    "properties": {
+                      "total": { "$ref": "utils.json#/key/total" },
+                      "items": {
+                        "type": "array",
+                        "items": { "$ref": "#/Search" }
+                      }
+                    }
                   }
                 }
               }
