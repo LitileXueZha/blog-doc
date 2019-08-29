@@ -41,7 +41,9 @@
           "schema": {
             "type": "string"
           }
-        }
+        },
+        { "$ref": "utils.json#/parameter/page" },
+        { "$ref": "utils.json#/parameter/size" }
       ],
       "responses": {
         "200": {
