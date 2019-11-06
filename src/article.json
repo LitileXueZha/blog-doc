@@ -46,6 +46,33 @@
       "create_at": { "$ref": "utils.json#/key/create_at" }
     }
   },
+  "Article_Trash": {
+    "type": "object",
+    "properties": {
+      "id": { "$ref": "utils.json#/key/id" },
+      "title": {
+        "type": "string",
+        "description": "文章标题",
+        "example": "星空在闪烁"
+      },
+      "summary": {
+        "type": "string",
+        "description": "文章摘要。若无摘要，前返回部分文章内容",
+        "example": "《终极三国》电视剧的插曲，想想都有点小怀念呢"
+      },
+      "tag": {
+        "type": "string",
+        "description": "文章的标签名",
+        "example": "JavaScript"
+      },
+      "category": {
+        "type": "string",
+        "description": "文章分类。note（笔记）、life（生活）",
+        "example": "note"
+      },
+      "modify_at": { "$ref": "utils.json#/key/create_at" }
+    }
+  },
 
   "methods": {
     "get": {
@@ -210,6 +237,49 @@
     }
     
   },
+
+  "trash": {
+    "get": {
+      "tags": ["Article"],
+      "summary": "文章垃圾箱",
+      "description": "文章垃圾箱接口。只支持分页查询，且返回部分字段",
+      "parameters": [
+        { "$ref": "utils.json#/parameter/page" },
+        { "$ref": "utils.json#/parameter/size" }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "total": { "$ref": "utils.json#/key/total" },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/Article_Trash"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": {
+          "$ref": "utils.json#/response/default"
+        }
+      },
+      "security": [{ "api_key": [] }]
+    }
+  },
+
   "utils": {
     "tag": {
       "type": "string",

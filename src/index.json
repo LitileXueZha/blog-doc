@@ -9,14 +9,14 @@
 
   "servers": [
     {
-      "url": "{protocol}://api.ningtaostudy.cn/{basePath}",
+      "url": "{protocol}://api.ningtaostudy.cn/{version}",
       "description": "API服务器地址",
       "variables": {
         "protocol": {
           "enum": ["https", "http"],
           "default": "https"
         },
-        "basePath": {
+        "version": {
           "default": "v1"
         }
       }
@@ -34,6 +34,7 @@
   "paths": {
     "/articles": { "$ref": "article.json#/methods" },
     "/articles/{id}": { "$ref": "article.json#/single" },
+    "/articles/trash": { "$ref": "article.json#/trash" },
     "/search": { "$ref": "search.json#/single" },
     "/tags": { "$ref": "tag.json#/methods" },
     "/tags/{id}": { "$ref": "tag.json#/single" },
@@ -57,6 +58,7 @@
     "schemas": {
       "Search": { "$ref": "search.json#/Search" },
       "Article": { "$ref": "article.json#/Article" },
+      "Article_Trash": { "$ref": "article.json#/Article_Trash" },
       "Tag": { "$ref": "tag.json#/Tag" },
       "Comment": { "$ref": "comment.json#/Comment" },
       "Msg": { "$ref": "msg.json#/Msg" }
