@@ -23,6 +23,16 @@
         "description": "留言使用的平台：pc（电脑）、mobile（手机）",
         "example": "pc"
       },
+      "user_agent": {
+        "type": "string",
+        "description": "用户浏览器字符串",
+        "example": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+      },
+      "read": {
+        "type": "boolean",
+        "description": "博主是否已读",
+        "example": false
+      },
       "create_at": { "$ref": "utils.json#/key/create_at" }
     }
   },
@@ -77,7 +87,8 @@
               "properties": {
                 "name": { "$ref": "#/Msg/properties/name" },
                 "content": { "$ref": "#/Msg/properties/content" },
-                "platform": { "$ref": "#/Msg/properties/platform" }
+                "platform": { "$ref": "#/Msg/properties/platform" },
+                "user_agent": { "$ref": "#/Msg/properties/user_agent" }
               }
             }
           }
