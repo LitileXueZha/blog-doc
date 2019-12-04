@@ -33,6 +33,11 @@
         "description": "博主是否已读",
         "example": false
       },
+      "site": {
+        "type": "url",
+        "description": "留言人网站，友链备用",
+        "example": "https://www.ningtaostudy.cn"
+      },
       "create_at": { "$ref": "utils.json#/key/create_at" }
     }
   },

@@ -15,7 +15,7 @@
     "page": {
       "name": "page",
       "in": "query",
-      "description": "分页数，表示第几页。默认为 1",
+      "description": "页码。默认为 1",
       "example": 1,
       "schema": {
         "type": "number"
@@ -24,7 +24,7 @@
     "size": {
       "name": "size",
       "in": "query",
-      "description": "数量，共有多少条数据。默认为 10",
+      "description": "每页数量。默认为 10",
       "example": 10,
       "schema": {
         "type": "number"

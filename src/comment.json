@@ -23,6 +23,31 @@
         "description": "评论类型：0-文章、1-留言。更多暂未定义",
         "example": 1
       },
+      "label": {
+        "type": "number",
+        "description": "用户标签：0-普通用户、1-博主",
+        "example": 0
+      },
+      "parent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "评论主体 `id`",
+            "example": "dasfd"
+          },
+          "title": {
+            "type": "string",
+            "description": "文章标题",
+            "example": "如何应对绿茶婊？"
+          },
+          "name": {
+            "type": "string",
+            "description": "留言人姓名",
+            "example": "滔"
+          }
+        }
+      },
       "create_at": { "$ref": "utils.json#/key/create_at" }
     }
   },
@@ -30,8 +55,8 @@
   "methods": {
     "get": {
       "tags": ["Comment"],
-      "summary": "获取评论列表",
-      "description": "根据 `parent_id` 获取对应文章、留言等的评论；根据 `type` 获取数据只在管理后台开放",
+      "summary": "获取对应评论列表",
+      "description": "根据 `parent_id` 获取对应文章、留言等的评论",
       "parameters": [
         {
           "name": "parent_id",
@@ -41,15 +66,6 @@
           "schema": {
             "type": "string",
             "example": "dasfd"
-          }
-        },
-        {
-          "name": "type",
-          "in": "query",
-          "description": "评论类型：0-文章、1-留言。更多暂未定义",
-          "schema": {
-            "type": "number",
-            "example": 0
           }
         },
         { "$ref": "utils.json#/parameter/page" },
@@ -183,6 +199,54 @@
                     "nullable": true,
                     "description": "null，返回为一个空对象null",
                     "example": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    }
+  },
+
+  "all": {
+    "get": {
+      "tags": ["Comment"],
+      "summary": "获取评论列表（管理后台可用）",
+      "description": "查询全部评论列表，并可根据状态筛选",
+      "parameters": [
+        { "$ref": "utils.json#/parameter/page" },
+        { "$ref": "utils.json#/parameter/size" },
+        { "$ref": "utils.json#/parameter/filter" },
+        {
+          "name": "type",
+          "in": "query",
+          "description": "评论类型：0-文章、1-留言。更多暂未定义",
+          "schema": {
+            "type": "number",
+            "example": 0
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": { "$ref": "utils.json#/key/code" },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "total": { "$ref": "utils.json#/key/total" },
+                      "items": {
+                        "type": "array",
+                        "items": { "$ref": "#/Comment" }
+                      }
+                    }
                   }
                 }
               }
