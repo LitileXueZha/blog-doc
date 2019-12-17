@@ -38,12 +38,12 @@
           },
           "title": {
             "type": "string",
-            "description": "文章标题",
+            "description": "当 `type` 为 `0` 时存在。文章标题",
             "example": "如何应对绿茶婊？"
           },
           "name": {
             "type": "string",
-            "description": "留言人姓名",
+            "description": "当 `type` 为 `1` 时存在。留言人姓名",
             "example": "滔"
           }
         }

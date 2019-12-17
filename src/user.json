@@ -1,0 +1,97 @@
+{
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": { "$ref": "utils.json#/key/id" },
+        "account": {
+          "type": "string",
+          "description": "账户名",
+          "example": "123@qq.com"
+        },
+        "display_name": {
+          "type": "string",
+          "description": "用户昵称",
+          "example": "诸葛林"
+        },
+        "avatar": {
+          "type": "string",
+          "description": "用户头像",
+          "example": "https://www.ningtaostudy.cn/images/1527317510011.png"
+        },
+        "create_at": { "$ref": "utils.json#/key/create_at" }
+      }
+    },
+
+    "oauth": {
+        "get": {
+            "tags": ["Universal APIs"],
+            "summary": "统一 API 认证",
+            "description": "目前无需任何额外处理即会下发鉴权 token，谨慎使用！！！或在 `header` 中带上旧 token",
+            "responses": {
+                "200": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "code": { "$ref": "utils.json#/key/code" },
+                          "data": { "$ref": "utils.json#/key/token" }
+                        }
+                      }
+                    }
+                  }
+                },
+                "default": { "$ref": "utils.json#/response/default" }
+              },
+              "security": [{ "api_key": [] }]      
+        }
+    },
+
+    "login": {
+      "post": {
+        "tags": ["Universal APIs"],
+        "summary": "管理用户登录",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account": { "$ref": "#/User/properties/account" },
+                  "pwd": {
+                      "type": "string",
+                      "description": "密码",
+                      "example": "this is password"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": { "$ref": "utils.json#/key/code" },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "token": { "$ref": "utils.json#/key/token" },
+                            "user": { "$ref": "#/User" }
+                        }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": { "$ref": "utils.json#/response/default" }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    }
+  }

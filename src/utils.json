@@ -105,6 +105,11 @@
       "type": "number",
       "description": "返回数据总数",
       "example": 1
+    },
+    "token": {
+      "type": "string",
+      "description": "**jwt** 类型 token",
+      "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.MTU3Njg0MDYyMDpiZW4=.enCpi8Loy+gA/hobLeWp56UfO7aQS/otOXvBm4wRbs0="
     }
   }
 }

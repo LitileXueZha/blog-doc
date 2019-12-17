@@ -29,7 +29,7 @@
 
   "single": {
     "get": {
-      "tags": ["Search"],
+      "tags": ["Universal APIs"],
       "summary": "搜索相关内容。目前仅支持文章、站内写死的内容",
       "description": "全文搜索，空格作为分词符",
       "parameters": [

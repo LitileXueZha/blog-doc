@@ -24,7 +24,7 @@
   ],
 
   "tags": [
-    { "name": "Search", "description": "搜索" },
+    { "name": "Universal APIs", "description": "一些公共的 `API`，非模块式" },
     { "name": "Article", "description": "与文章相关的一系列接口" },
     { "name": "Tag", "description": "文章标签" },
     { "name": "Comment", "description": "评论，有文章的，也有留言板的" },
@@ -42,7 +42,9 @@
     "/msg/{id}": { "$ref": "msg.json#/single" },
     "/comments": { "$ref": "comment.json#/methods" },
     "/comments/{id}": { "$ref": "comment.json#/single" },
-    "/comments/all": { "$ref": "comment.json#/all" }
+    "/comments/all": { "$ref": "comment.json#/all" },
+    "/user/login": { "$ref": "user.json#/login" },
+    "/oauth": { "$ref": "user.json#/oauth" }
   },
 
   "components": {
@@ -57,12 +59,13 @@
     },
 
     "schemas": {
-      "Search": { "$ref": "search.json#/Search" },
+      "SearchResult": { "$ref": "search.json#/Search" },
       "Article": { "$ref": "article.json#/Article" },
       "Article_Trash": { "$ref": "article.json#/Article_Trash" },
       "Tag": { "$ref": "tag.json#/Tag" },
       "Comment": { "$ref": "comment.json#/Comment" },
-      "Msg": { "$ref": "msg.json#/Msg" }
+      "Msg": { "$ref": "msg.json#/Msg" },
+      "User": { "$ref": "user.json#/User" }
     }
   }
 }
