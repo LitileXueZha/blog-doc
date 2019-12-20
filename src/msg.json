@@ -160,7 +160,7 @@
     },
     "delete": {
       "tags": ["Msg"],
-      "summary": "删除留言",
+      "summary": "删除留言（管理员）",
       "description": "删除不符合国家法律的留言！！！",
       "parameters": [
         { "$ref": "utils.json#/parameter/id" }

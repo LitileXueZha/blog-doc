@@ -126,7 +126,7 @@
     },
     "post": {
       "tags": ["Article"],
-      "summary": "创建文章",
+      "summary": "创建文章（管理员）",
       "requestBody": {
         "required": true,
         "description": "创建文章需要的数据",
@@ -182,7 +182,7 @@
     },
     "put": {
       "tags": ["Article"],
-      "summary": "更新单个文章",
+      "summary": "更新单个文章（管理员）",
       "description": "修改文章内容、分类、状态等等。垃圾箱里的文章不再显示",
       "parameters": [
         { "$ref": "utils.json#/parameter/id" }
@@ -209,7 +209,7 @@
     },
     "delete": {
       "tags": ["Article"],
-      "summary": "删除文章",
+      "summary": "删除文章（管理员）",
       "description": "将指定文章删除（逻辑删除）",
       "parameters": [{ "$ref": "utils.json#/parameter/id" }],
       "responses": {
@@ -241,7 +241,7 @@
   "trash": {
     "get": {
       "tags": ["Article"],
-      "summary": "文章垃圾箱",
+      "summary": "文章垃圾箱（管理员）",
       "description": "文章垃圾箱接口。只支持分页查询，且返回部分字段",
       "parameters": [
         { "$ref": "utils.json#/parameter/page" },

@@ -71,7 +71,7 @@
     },
     "post": {
       "tags": ["Tag"],
-      "summary": "创建一个标签",
+      "summary": "创建一个标签（管理员）",
       "description": "创建标签需要的数据。可能会创建失败，因为该标签被逻辑删除。尽量使用 `status` 来控制标签",
       "requestBody": {
         "required": true,
@@ -119,7 +119,7 @@
   "single": {
     "put": {
       "tags": ["Tag"],
-      "summary": "更新单个标签",
+      "summary": "更新单个标签（管理员）",
       "description": "不能更新为相同 `id` 可用标签",
       "parameters": [{
         "$ref": "utils.json#/parameter/id"
@@ -145,7 +145,7 @@
     },
     "delete": {
       "tags": ["Tag"],
-      "summary": "删除标签",
+      "summary": "删除标签（管理员）",
       "description": "尽量用 `status` 来控制。最好不要删除",
       "parameters": [{
         "$ref": "utils.json#/parameter/id"

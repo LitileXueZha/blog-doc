@@ -142,7 +142,7 @@
   "single": {
     "put": {
       "tags": ["Comment"],
-      "summary": "更新评论",
+      "summary": "更新评论（管理员）",
       "description": "仅管理后台可操作。过滤一些**不合法**内容",
       "parameters": [
         { "$ref": "utils.json#/parameter/id" }
@@ -181,7 +181,7 @@
     },
     "delete": {
       "tags": ["Comment"],
-      "summary": "删除评论",
+      "summary": "删除评论（管理员）",
       "description": "只有管理后台才能删除某些不合法评论",
       "parameters": [
         { "$ref": "utils.json#/parameter/id" }
@@ -214,7 +214,7 @@
   "all": {
     "get": {
       "tags": ["Comment"],
-      "summary": "获取评论列表（管理后台可用）",
+      "summary": "获取评论列表（管理员）",
       "description": "查询全部评论列表，并可根据状态筛选",
       "parameters": [
         { "$ref": "utils.json#/parameter/page" },
