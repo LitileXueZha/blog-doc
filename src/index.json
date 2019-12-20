@@ -44,7 +44,8 @@
     "/comments/{id}": { "$ref": "comment.json#/single" },
     "/comments/all": { "$ref": "comment.json#/all" },
     "/user/login": { "$ref": "user.json#/login" },
-    "/oauth": { "$ref": "user.json#/oauth" }
+    "/oauth": { "$ref": "user.json#/oauth" },
+    "/whoami": { "$ref": "user.json#/whoami" }
   },
 
   "components": {

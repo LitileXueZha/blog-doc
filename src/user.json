@@ -93,5 +93,30 @@
         },
         "security": [{ "api_key": [] }]
       }
-    }
+    },
+
+    "whoami": {
+      "get": {
+          "tags": ["Universal APIs"],
+          "summary": "查询访问用户",
+          "description": "根据 `token` 返回当前用户信息，支撑免登录",
+          "responses": {
+              "200": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "code": { "$ref": "utils.json#/key/code" },
+                        "data": { "$ref": "#/User" }
+                      }
+                    }
+                  }
+                }
+              },
+              "default": { "$ref": "utils.json#/response/default" }
+            },
+            "security": [{ "api_key": [] }]      
+      }
   }
+}
