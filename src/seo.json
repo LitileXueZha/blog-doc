@@ -1,0 +1,63 @@
+{
+    "Article": {
+        "type": "object",
+        "properties": {
+            "id": { "$ref": "utils.json#/key/id" },
+            "title": { "$ref": "article.json#/Article/properties/title" },
+            "summary": { "$ref": "article.json#/Article/properties/summary" },
+            "tag": { "$ref": "article.json#/Article/properties/tag" },
+            "tag_name": { "$ref": "article.json#/Article/properties/tag_name" },
+            "category": { "$ref": "article.json#/Article/properties/category" },
+            "bg": { "$ref": "article.json#/Article/properties/bg" },
+            "create_at": { "$ref": "utils.json#/key/create_at" }
+        }
+    },
+    "Topic": {
+        "type": "object",
+        "properties": {
+            "id": { "$ref": "utils.json#/key/id" },
+            "title": { "$ref": "article.json#/Article/properties/title" }
+        }
+    },
+
+    "index": {
+        "get": {
+            "tags": ["Universal APIs"],
+            "summary": "首页 seo",
+            "description": "首页 seo 数据，包含文章、标签、热点文章三块",
+            "responses": {
+                "200": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "code": { "$ref": "utils.json#/key/code" },
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "articles": {
+                                                "type": "array",
+                                                "items": { "$ref": "#/Article" }
+                                            },
+                                            "tags": {
+                                                "type": "array",
+                                                "items": { "$ref": "tag.json#/Tag" }
+                                            },
+                                            "topics": {
+                                                "type": "array",
+                                                "items": { "$ref": "#/Topic" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "default": { "$ref": "utils.json#/response/default" }
+            },
+            "security": [{ "api_key": [] }]
+        }
+    }
+}

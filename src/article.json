@@ -78,7 +78,7 @@
     "get": {
       "tags": ["Article"],
       "summary": "获取文章列表",
-      "description": "批量获取接口，可以传入分页、过滤参数",
+      "description": "批量获取接口，可以传入分页、过滤参数。非管理员只能查询到上线状态",
       "parameters": [
         { "$ref": "utils.json#/parameter/page" },
         { "$ref": "utils.json#/parameter/size" },

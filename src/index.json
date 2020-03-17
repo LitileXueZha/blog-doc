@@ -38,6 +38,7 @@
     "/search": { "$ref": "search.json#/single" },
     "/tags": { "$ref": "tag.json#/methods" },
     "/tags/{id}": { "$ref": "tag.json#/single" },
+    "/tags/click": { "$ref": "tag.json#/click" },
     "/msg": { "$ref": "msg.json#/methods" },
     "/msg/{id}": { "$ref": "msg.json#/single" },
     "/comments": { "$ref": "comment.json#/methods" },
@@ -45,7 +46,8 @@
     "/comments/all": { "$ref": "comment.json#/all" },
     "/user/login": { "$ref": "user.json#/login" },
     "/oauth": { "$ref": "user.json#/oauth" },
-    "/whoami": { "$ref": "user.json#/whoami" }
+    "/whoami": { "$ref": "user.json#/whoami" },
+    "/seo/index": { "$ref": "seo.json#/index" }
   },
 
   "components": {

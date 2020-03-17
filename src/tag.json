@@ -30,7 +30,7 @@
     "get": {
       "tags": ["Tag"],
       "summary": "获取标签列表",
-      "description": "批量获取标签。考虑到这个不会太多，不做分页",
+      "description": "批量获取标签。考虑到这个不会太多，不做分页。非管理员仅能查询到可用状态",
       "parameters": [{
         "name": "status",
         "in": "query",
@@ -167,6 +167,22 @@
             }
           }
         },
+        "default": { "$ref": "utils.json#/response/default" }
+      },
+      "security": [{ "api_key": [] }]
+    }
+  },
+
+  "click": {
+    "head": {
+      "tags": ["Tag"],
+      "summary": "标签统计",
+      "description": "标签点击(访问)量统计",
+      "parameters": [{
+        "$ref": "utils.json#/parameter/id"
+      }],
+      "responses": {
+        "204": {},
         "default": { "$ref": "utils.json#/response/default" }
       },
       "security": [{ "api_key": [] }]
