@@ -43,7 +43,7 @@
     window.onload = function() {
       // Build a system
       window.ui = SwaggerUIBundle({
-        url: window.location.origin +'/src/index.json',
+        url: location.origin + location.pathname +'src/index.json',
         dom_id: '#swagger-ui',
         deepLinking: true,
         docExpansion: 'none',
