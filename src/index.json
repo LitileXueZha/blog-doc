@@ -20,6 +20,19 @@
           "default": "v1"
         }
       }
+    },
+    {
+      "url": "{protocol}://php/{version}",
+      "description": "本地服务",
+      "variables": {
+        "protocol": {
+          "enum": ["https", "http"],
+          "default": "https"
+        },
+        "version": {
+          "default": "v1"
+        }
+      }
     }
   ],
 
